@@ -24,3 +24,18 @@
   它会自动把整个单词放到下一行，而不会把单词截断掉的。
   word-break:break-all:截断换行：如果该行末端有个英文单词很长（congratulation），它会把单词截断，变成该行末端为conra
   ，下一行为tulation了。
+5.新窗口打开链接target="_blank"
+  <a href="http://hunger-train.com" target="_blank">hunger</a>
+6.跳转到锚点：
+  <a href="#tips" target="_blank">hunger</a>
+  ...
+  <p id="tip">点击链接跳转到这里</p>
+7.css伪类，次序不要放反
+ a:link /*未访问的链接*/
+ a:visited /*已访问的链接*/
+ a:hover  /*鼠标划过链接*/
+ a:active /*已选中的链接*/
+8.表格：border-collapse:collapse;/*边框为单线*/
+9.块级元素占用空间是一整行，行内元素占用空间是它自身的内容宽度。行内元素可以一并排显示，块级元素不能。
+  块级元素：div、p、h1...h6、table、tr、ul、li、dl、dt、form
+  行内元素：a、span、img、input、button、em、textarea
