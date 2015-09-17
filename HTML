@@ -61,5 +61,39 @@
    input都要有name属性。
 14.wed服务器
    wed服务器是可以向发出请求的浏览器提供文档的程序，Unix和Linux平台下的常用wed服务器有Apache，Nginx，Lighttpd，Tomcat，windows常用IIS。
-   
-  
+15.CSS
+   属性选择器：input[type="text"]{}  input[type="button"]{}
+16.CSS3常用选择器
+   ：first-of-type：从一组中选择第一个元素
+   ：last-of-type：从一组中选择最后一个元素
+   ：hover：鼠标放置上的样式（ie6、7、8不支持a以外的标签使用：hover）
+17.::selection选中文本后的效果，只能添加color、background、cursor以及outline。
+18.:before在元素前面添加内容，:after在元素后面添加内容（ie6、7不支持）。
+19.背景图片：background-size：xxpx xxpx/cover/contain。（ie9以上版本支持）
+   css sprite 在线工具 把多个背景图片合成一张，通过background-position定位图片，减少网络请求。
+20.对齐
+   文本对齐text-align：jusitfy（两边对齐）
+   div水平居中margin：0 auto（注意声明doctype）
+21.垂直
+   文本垂直居中：（1）另行高line-height等于外层容器高度height；（2）上下padding设置相等。
+   图片垂直居中：（1）//ie8及以上使用
+                      display:table-cell;
+                      vertical-align:middle;
+                  (2)在内层容器内加一个空元素
+                     .item2:before{
+                       content:'';
+                       display:inline-block;
+                       height:100%;
+                       vertical-align:middle;
+                      }
+                      .item img{
+                        vertical-align:middle;
+                      }
+                  （3）js处理，设置上下外边距等高。
+22.display：
+   none:隐藏该元素，不占用文档流
+   inline:以行内元素的形式展示
+   inline-block：行内块元素
+   block：块级别元素
+   table-cell：以表格方式展示，常用于垂直居中
+23.display:none和visibility:hidden区别：visibility:hidden隐藏，但在浏览时保留位置；display：none视为不存在，且不加载。
