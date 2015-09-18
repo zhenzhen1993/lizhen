@@ -19,3 +19,28 @@
      .clearfix{
          *zoom:1;/*for ie 6,7*/
       }
+ 4.CSShack:
+   IE条件注释：
+   1、只在IE下生效
+    <!--[if IE]>
+    <link rel="stylesheet" type="text/css" href="ie.css">
+    <![endif]-->
+   2、只在IE6下生效
+    <!--[if IE 6]>
+    <link rel="stylesheet" type="text/css" href="ie6.css">
+    <![endif]-->
+   3、只在IE6以上版本生效
+    <!--[if gte IE 6]>
+     这段文字只在IE6以上(包括)版本IE浏览器显示
+    <![endif]-->
+   4、qq
+      非IE浏览器生效
+    <!--[if !IE]>
+      这段文字只在非IE浏览器显示
+    <![endif]-->
+ 5.CSS属性Hack
+   属性以下划线开头，只有ie6生效_margin-left:10px;/*ie6 only*/
+   属性以星号开头，只有ie6 ie7生效*color:red;
+   以\9结尾，所有的ie生效color:black\9;
+   以\0结尾，ie8，9,10color:white\0;
+ 6.js判断ie版本
