@@ -44,3 +44,21 @@
    以\9结尾，所有的ie生效color:black\9;
    以\0结尾，ie8，9,10color:white\0;
  6.js判断ie版本
+   // 是否小于等于ie8
+   var isIE = '\v'=='v'; 
+
+   // 判断ie版本
+   var ieVersion = (function() { if (new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})").exec(navigator.userAgent) != null)
+  { return parseFloat( RegExp.$1 ); }
+   else { return false; } })
+ 7.三角形：
+ .caret-down {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      margin-left: 2px;
+      vertical-align: middle;
+      border-top: 4px solid;
+      border-right: 4px solid transparent;
+      border-left: 4px solid transparent;
+    }
