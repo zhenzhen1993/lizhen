@@ -1,0 +1,6 @@
+1.组合选择器：多元素选择器，用，分隔；后代选择器，用空格分隔；子元素选择器，用>分隔；id和class选择器和选择器连写的时候中间没有分隔符。
+2.属性选择器：E[attr]匹配所有具有属性attr的元素；div[id]能取到所有有id属性的div；E[attr=value]匹配属性attr值为value的元素；div[id=test]
+  匹配id=test的div；E[attr~=value]匹配所有属性attr具有多个空格分隔、其中一个值等于value的元素；E[attr\|=value]匹配所有attr属性具有
+  多个-分隔，其中一个值以value开头的元素，主要用于lang属性，比如en、en-us；E[attr^=value]匹配属性attr的值以value开头的元素；E[attr$=value]
+  匹配属性attr的值以value结尾的元素；E[attr*=value]匹配属性attr的值包含value的元素。
+3.伪类选择器：
