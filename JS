@@ -1,0 +1,2 @@
+1.jQuery表单验证插件：https://plugins.jquery.com/tag/validate/
+  其中jQuery Validate插件是最常见的插件之一：http://jqueryvalidation.org/
