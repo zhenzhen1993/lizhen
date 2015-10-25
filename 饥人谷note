@@ -94,3 +94,12 @@
                   newChild作为target的子节点插入到existingChild节点之前  
  18.删除元素:removeChild
     替换元素:replaceChild
+ 19.事件绑定和解除绑定addEventListener和removeEventLister
+    注意：早期的ie使用element.attachEvent(event,function)和element.detachEvent(event,function)
+    addEventListener()方法用于向指定元素添加事件处理函数。addEventListener()方法添加的事件处理函数不会覆盖已存在的事件处理函数。
+    removeEventListener（）方法来移除事件的监听。
+ 20.addEventListener(event, function, useCapture); useCapture默认值为 false, 是冒泡传递。当useCapture值为 true 时, 事件使用捕获传递。
+ 21.冒泡阻止：e.stopPropagation,该方法阻止事件冒泡。父元素监听不再监听到事件。
+    取消默认事件：e.preventDefault()，该方法将通知web浏览器不要执行与事件关联的默认动作。
+ 22.
+    
