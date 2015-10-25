@@ -76,3 +76,21 @@
  10.基本类型：（数值、布尔值、null和undefined）指的是保存在栈内存中的简单数据段。
     引用数据类型：（对象、数组、函数、正则）指的是那些保存在堆内存中的对象，变量中保存的实际上只是一个指针，这个指针执
                  行内存中的另一个位置，由该位置保存对象。
+ 11.setTimeout作用：延时指定的毫秒数再执行指定代码。
+    setTimeout是全局作用域下函数，因此可加window，也可不加。如果要取消timeout，需要保存setTimeout的返回值，用clearTimeout取消掉这个返回值。
+ 12.setInterval作用：间隔指定的毫秒数不停的执行指定的代码。
+   setInterval是全局作用域下函数，因此可加window，也可不加。如果要取消interval，需要保存setInterval的返回值，用clearIntervla取消掉这个返回值。
+ 13.setTimeout注意点（扩展）：设置的时间不是准确的，浏览器会尽量准确，但不能保证 。
+    setTimeout有最小的时间间隔（4ms-16ms），所以设置 setTimeout(function(){}, 1)其实不会在1ms后执行，而是再最小间隔之后比如4ms之后。
+ 14. 同步是指当一个函数执行完后再执行下面的函数，平时写的函数写的语句都是同步的。
+     异步是用事件来实现的，避免页面卡死的问题。
+ 15.修改html内容：document.getElementById(id).innerHTML=new HTML
+    修改html属性：document.getElementById(id).attribute=新值
+                  document.getElementById(id).setAttribute(属性,值)
+ 16.改变样式：element.style.XXX=XXX
+ 17.添加元素:appendChild，使用方法target.appendChild(newChild);
+     insertBefore:insertBefore() 方法的作用是：在现有的子节点前插入一个新的子节点 
+                  insertBefore用法:target.insertBefore(newChild,existingChild) 
+                  newChild作为target的子节点插入到existingChild节点之前  
+ 18.删除元素:removeChild
+    替换元素:replaceChild
