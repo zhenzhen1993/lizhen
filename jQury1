@@ -1,0 +1,67 @@
+1.文档就绪事件:
+$(document).ready(function(){
+   //jQuery methods go here
+   })
+  这是为了防止文档在完全加载之前运行jQuery代码.
+  如果在文档没有完全加载之前就运行函数,操作可能失败.
+2.jQuery选择器:
+  1.元素选择器:用户点击按钮后,所有<p>元素都隐藏:
+    $(document).ready(function(){
+      $("button").click(function(){
+         $("p").hide();
+      });
+    });
+  2.id选择器:用户点击按钮后,有id="test"属性的元素将被隐藏.
+    $(document).ready(function(){
+      $("button").click(function(){
+       $("#test").hide();
+       });
+    });
+  3.class选择器:用户点击按钮后所有带有class="test"的元素都隐藏.
+   $(document).ready(function(){
+     $("button").click(function(){
+      $(".test").hide();
+      });
+    });
+   4.$("*"):选取所有元素;$(this):选取当前html元素;$("[href]"):选取带有href属性的元素; $("a[target='_blank']"):选取所有 target 属性值等于"_blank"的 <a> 元素.
+     $(":button"):选取所有type="button"的<button>元素和<input>元素;$("tr:even"):选取偶数位置的<tr>元素;
+     $("tr:odd"):选取奇数位置的<tr>元素.
+3.jQury事件:
+ 常见DOM事件:鼠标事件:click,dblclick(双击),mouseenter,mouseleave;
+             键盘事件:keypress,keydown,keyup;
+             表单事件:submit,change,focus,blur;
+             文档/窗口事件:load,resize;scroll,unload;
+4.jQuery hide()和show()
+ $(selection).hide(speed,callback);
+ $(selection).show(speed,callback);
+ 可选speed,可以取以下值:"show","fast"或毫秒.
+ 可选callback参数是隐藏或显示完成后所执行的函数名称.
+ jQuery toggle():通过jQuery,您可以使用toggle()方法来切换hide()和show()方法:显示被隐藏的元素,并隐藏已显示的元素.
+  $(selector).toggle(speed,callback); 
+5.jQuery效果-淡入淡出:
+ $(selector).fadeIn(speed,callback):淡入已隐藏的元素.
+ 可选speed,可以取以下值:"show","fast"或毫秒.
+ $(selector).fadeOut(speed.callback):淡出可见元素.
+ $(selector).fadeToggle(speed,callback):在fadeIn()和fadeOut()方法之间进行切换.
+ $(selector).fadeTo(speed,opacity,callback):允许渐变为给定的不透明度(值介于0-1之间).
+  必需的 opacity 参数将淡入淡出效果设置为给定的不透明度（值介于 0 与 1 之间）。
+6.jQuery效果-滑动:
+  $(selector).slideDown(speed,callback):向下滑动元素.
+  $(selector).slideUp(speed,callback):向上滑动元素.
+  $(selector).slideToggle(speed,callback):在slideDown()与slideUp()方法之间进行切换.
+7.jQuery效果-动画:
+  $(selector).animate({params},speed,callback):用于创建自定义动画.
+   必需的params参数定义形成动画的css属性(可多个属性). (默认情况下，所有 HTML 元素都有一个静态位置，且无法移动。
+   如需对位置进行操作，要记得首先把元素的 CSS position 属性设置为 relative、fixed 或 absolute！)
+   当使用 animate() 时，必须使用 Camel 标记法书写所有的属性名，比如，必须使用 paddingLeft 而不是 padding-left，使用 marginRight 而不是 margin-right，等等。
+   色彩动画并不包含在核心 jQuery 库中。如果需要生成颜色动画，您需要从 jQuery.com 下载 Color Animations插件.
+   也可以定义相对值(该值相对于元素的当前值).需要在值的前面加上+=或-=.
+   可以使用预定义的值:如height:'show/hide/toggle'
+   可以使用队列功能:如var div=$("div");
+                      div.animate({height:'300px',opacity:'0.4'},"slow");
+                      div.animate({width:'300px',opacity:'0.8'},"slow");
+8.jQuery停止动画:
+  $(selector).stop(stopAll,goToEnd):停止动画或效果,在它们完成之前.stop()方法适用所有jQuery效果函数.
+  可选的stopAll参数规定是否应该清除动画队列.默认是false,即仅停止活动的动画,允许任何排入队列的动画向后执行.
+  可选的goToEnd参数规定是否立即完成当前动画.默认是false.因此,默认地,stop()会清除在被选元素上指定的当前动画.
+9.jQuery Callback方法:
