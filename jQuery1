@@ -1,0 +1,236 @@
+1.文档就绪事件:
+$(document).ready(function(){
+   //jQuery methods go here
+   })
+  这是为了防止文档在完全加载之前运行jQuery代码.
+  如果在文档没有完全加载之前就运行函数,操作可能失败.
+2.jQuery选择器:
+  1.元素选择器:用户点击按钮后,所有<p>元素都隐藏:
+    $(document).ready(function(){
+      $("button").click(function(){
+         $("p").hide();
+      });
+    });
+  2.id选择器:用户点击按钮后,有id="test"属性的元素将被隐藏.
+    $(document).ready(function(){
+      $("button").click(function(){
+       $("#test").hide();
+       });
+    });
+  3.class选择器:用户点击按钮后所有带有class="test"的元素都隐藏.
+   $(document).ready(function(){
+     $("button").click(function(){
+      $(".test").hide();
+      });
+    });
+   4.$("*"):选取所有元素;$(this):选取当前html元素;$("[href]"):选取带有href属性的元素; $("a[target='_blank']"):选取所有 target 属性值等于"_blank"的 <a> 元素.
+     $(":button"):选取所有type="button"的<button>元素和<input>元素;$("tr:even"):选取偶数位置的<tr>元素;
+     $("tr:odd"):选取奇数位置的<tr>元素.
+3.jQury事件:
+ 常见DOM事件:鼠标事件:click,dblclick(双击),mouseenter,mouseleave;
+             键盘事件:keypress,keydown,keyup;
+             表单事件:submit,change,focus,blur;
+             文档/窗口事件:load,resize;scroll,unload;
+4.jQuery hide()和show()
+ $(selection).hide(speed,callback);
+ $(selection).show(speed,callback);
+ 可选speed,可以取以下值:"show","fast"或毫秒.
+ 可选callback参数是隐藏或显示完成后所执行的函数名称.
+ jQuery toggle():通过jQuery,您可以使用toggle()方法来切换hide()和show()方法:显示被隐藏的元素,并隐藏已显示的元素.
+  $(selector).toggle(speed,callback); 
+5.jQuery效果-淡入淡出:
+ $(selector).fadeIn(speed,callback):淡入已隐藏的元素.
+ 可选speed,可以取以下值:"show","fast"或毫秒.
+ $(selector).fadeOut(speed.callback):淡出可见元素.
+ $(selector).fadeToggle(speed,callback):在fadeIn()和fadeOut()方法之间进行切换.
+ $(selector).fadeTo(speed,opacity,callback):允许渐变为给定的不透明度(值介于0-1之间).
+  必需的 opacity 参数将淡入淡出效果设置为给定的不透明度（值介于 0 与 1 之间）。
+6.jQuery效果-滑动:
+  $(selector).slideDown(speed,callback):向下滑动元素.
+  $(selector).slideUp(speed,callback):向上滑动元素.
+  $(selector).slideToggle(speed,callback):在slideDown()与slideUp()方法之间进行切换.
+7.jQuery效果-动画:
+  $(selector).animate({params},speed,callback):用于创建自定义动画.
+   必需的params参数定义形成动画的css属性(可多个属性). (默认情况下，所有 HTML 元素都有一个静态位置，且无法移动。
+   如需对位置进行操作，要记得首先把元素的 CSS position 属性设置为 relative、fixed 或 absolute！)
+   当使用 animate() 时，必须使用 Camel 标记法书写所有的属性名，比如，必须使用 paddingLeft 而不是 padding-left，使用 marginRight 而不是 margin-right，等等。
+   色彩动画并不包含在核心 jQuery 库中。如果需要生成颜色动画，您需要从 jQuery.com 下载 Color Animations插件.
+   也可以定义相对值(该值相对于元素的当前值).需要在值的前面加上+=或-=.
+   可以使用预定义的值:如height:'show/hide/toggle'
+   可以使用队列功能:如var div=$("div");
+                      div.animate({height:'300px',opacity:'0.4'},"slow");
+                      div.animate({width:'300px',opacity:'0.8'},"slow");
+8.jQuery停止动画:
+  $(selector).stop(stopAll,goToEnd):停止动画或效果,在它们完成之前.stop()方法适用所有jQuery效果函数.
+  可选的stopAll参数规定是否应该清除动画队列.默认是false,即仅停止活动的动画,允许任何排入队列的动画向后执行.
+  可选的goToEnd参数规定是否立即完成当前动画.默认是false.因此,默认地,stop()会清除在被选元素上指定的当前动画.
+9.jQuery_chaining:
+  Chaining允许我们在一条语句中允许多个jQuery方法(在相同的元素上).
+10.jQuery-获取内容和属性:
+  1.获得内容-text():设置或返回所选元素的文本内容.
+             html():设置或返回所选元素的内容(包括html标记)
+             val():设置或返回表单字段的值.
+  2.获取属性-attr():用于获取属性值.如获得链接中 href 属性的值:$("button").click(function(){
+                                                               alert($("#w3s").attr("href"));
+                                                                }); 
+ 11.jQuery - 设置内容和属性:
+   1.设置内容-text():设置或返回所选元素的文本内容.
+              html():设置或返回所选元素的内容(包括html标记)
+              val():设置或返回表单字段的值.
+              
+     text(),html(),val()的回调函数:回调函数有两个参数:被选元素列表中当前元素的下标,以及原始值.然后以函数新值返回您希望使用的字符串.
+     例:$("#btn1").click(function(){
+          $("#test1").text(function(i,origText){
+          return "Old text: " + origText + " New text: Hello world!
+          (index: " + i + ")"; 
+           });
+         });
+
+    2.设置属性-attr():设置/改变属性值,允许同时设置多个属性.
+      如:$("button").click(function(){
+           $("#w3s").attr({
+           "href" : "http://www.dnzs.com.cn/w3cschool/jquery",
+           "title" : "dnzs jQuery Tutorial"
+             });
+           }); 
+      attr() 的回调函数:回调函数由两个参数：被选元素列表中当前元素的下标，以及原始（旧的）值。然后以函数新值返回您希望使用的字符串。
+12.jQuery-添加元素
+    append()方法在被选元素的结尾插入内容.
+    prepend()方法在被选元素的开头插入内容.
+    通过 append() 和 prepend() 方法添加若干新元素:
+    append() 和 prepend() 方法能够通过参数接收无限数量的新元素。可以通过 jQuery 来生成文本/HTML，或者通过 JavaScript 代码和 DOM 元素。
+   如:function appendText()
+     {
+      var txt1="<p>Text.</p>";               // Create element with HTML  
+      var txt2=$("<p></p>").text("Text.");   // Create with jQuery
+      var txt3=document.createElement("p");  // Create with DOM
+          txt3.innerHTML="Text.";
+      $("p").append(txt1,txt2,txt3);         // Append the new elements 
+     }
+    after()方法在被选元素之后插入内容.
+    before()方法在被选元素之前插入内容.
+    通过after()和before()方法添加若干新元素:
+    after() 和 before() 方法能够通过参数接收无限数量的新元素。可以通过 text/HTML、jQuery 或者 JavaScript/DOM 来创建新元素。
+    类似上.
+13.jQuery-删除元素
+    remove():删除被选元素(及其子元素).
+    empty():从被选元素中删除子元素.
+   过滤被删除的元素:remove()方法也可接受一个参数,允许对被删元素进行过滤.该参数可以是任何jQuery选择器的用法.
+   如删除class="italic"的所有<p>元素:
+     $("p").remove(".italic");
+14.jQuery-获取并设置css类:
+   addClass():向被选元素添加一个或多个类.
+    如:$("button").click(funcyion(){
+    $("h1,h2,p").addClass("blue");
+    $("div").addClass("important");
+    });
+   removeClass():从被选元素删除一个或多个类.
+   toggleClass():对被选元素进行添加/删除类的切换操作.
+   css():设置或返回样式属性.
+15.jQuery-css()方法
+   返回css属性:css("propertyname");
+   设置css属性:css("propertyname","value");
+   设置多个css属性:css({"propertyname":"value","propertyname":"value",...});
+16.jQuery-尺寸
+  width():设置或返回元素的宽度(不包括内边距,边框或外边距)
+  height():设置或返回元素的高度(不包括内边距,边框或外边距)
+  如:返回指定的<div>元素的宽度和高度:
+     $("button").click(function(){
+       var txt="";
+       txt+="Width: " + $("#div1").width() + "</br>";
+       txt+="Height: " + $("#div1").height();
+       $("#div1").html(txt);
+       });
+  innerWidth():返回元素的宽度(包括内边距).
+  innerHeight():返回元素的高度(包括内边距).
+  outerWidth():返回元素的宽度(包括内边距和边框).
+  outerHeight():返回元素的高度(包括内边距和边框).
+17.jQuery遍历-祖先:
+   parent():返回被选元素的直接父元素.该方法只会向上一级对DOM树进行遍历.
+   parents():返回被选元素的所有祖先元素,它一路向上直到文档的根元素(<html>).
+     可以使用可选参数来过滤对祖先元素的搜索.
+     如:返回所有<span>元素的所有祖先,并且它是<ul>元素.
+       $(document).ready(function(){
+       $("span").parents("ul");
+       });
+   parentsUntil():返回介于两个给定元素之间的所有祖先元素.
+18.jQuery遍历-后代:
+   children():返回被选元素的所有直接子元素.该方法只会对下一级对DOM树进行遍历.
+   也可以使用可选参数来过滤对子元素的搜索:
+   如:返回类名为"1"的所有<p>元素,并且它们是<div>的直接子元素.
+    $(document).ready(function(){
+     $("div").children("p.1");
+     });
+   find()返回被选元素的后代元素,一路向下直到最后一个后代.
+19.jQuery遍历-同胞(siblings):
+   siblings():返回被选元素的所有同胞元素.
+   可以使用可选参数来过滤对同胞元素的搜索。
+   next():返回被选元素的下一个同胞元素.该方法只返回一个元素.
+   nextAll():返回被选元素的所有跟随的同胞元素.
+   nextUntil():返回介于两个给定参数之间的所有跟随的同胞元素.
+   prev(), prevAll() 以及 prevUntil() 方法的工作方式与上面的方法类似，只不过方向相反而已：它们返回的是前面的同胞元素（在 DOM 树中沿着同胞元素向后遍历，而不是向前）。
+20.jQuery遍历-过滤:
+   first():返回被选元素的首个元素.
+   last():返回被选元素的最后一个元素.
+   eq():返回被选元素中带有指定索引号的元素.
+   filter():允许规定一个标准.不匹配这个标准的元素会被从集合中删除,匹配的元素会被返回.
+   如:返回带有类名 "intro" 的所有 <p> 元素：
+      $(document).ready(function(){
+      $("p").filter(".intro");
+       }); 
+   not():返回不匹配标准的所有元素.与fliter()相反.
+21.jQuery-AJAX load()方法:
+   load():从服务器加载数据,并把返回的数据放入被选元素中.
+   $(selector).load(URL,data,callback);
+    必需的URL参数规定您希望加载的URL.
+    可选的data参数规定与请求一同发送的查询字符串键/值对集合.
+    可选的callback参数是load()方法完成后所执行的函数名称.
+      也可以把 jQuery 选择器添加到 URL 参数。
+      例:$("#div1").load("demo_test.txt #p1");
+    可选的callback参数规定当load()方法完成后所要允许的回调函数.回调函数可以设置不同的参数:
+       responseTxt:包含调用成功时的结果内容.
+       statusTxt:包含调用的状态.
+       xhr:包含XMLTttpRequest对象.
+       例:会在 load() 方法完成后显示一个提示框。如果 load() 方法已成功，则显示"外部内容加载成功！"，而如果失败，则显示错误消息：
+         $("button").click(function(){
+           $("#div1").load("demo_test.txt",function(response)Txt,statusTxt,xhr){
+             if(statusTxt=="success")
+               alert("External content loaded successfully!");
+             if(statusTxt=="error")
+               alert("Error:"+xhr.status+":"+xhr.statusText);
+            });
+         });
+22.jQuery-AJAX get()和post()方法:
+   $.get(URL,callback):通过HTTP GET请求从服务器上请求数据.
+     必需的URL参数规定您希望请求的URL.
+     可选的callback参数是请求成功后所执行的函数名.
+     例:$("button").click(function(){
+          $.get("demo_test.html",function(data,status){
+            alert("Data: " + data + "nStatus: " + status);
+          });
+        });
+        第一个回调参数存有被请求页面的内容，第二个回调参数存有请求的状态。
+   $.post(URL,data,callback):通过HTTP POST请求从服务器上请求数据.
+     必需的URL参数规定您希望请求的URL.
+     可选的data参数规定连同请求发送的数据.
+     可选的callback参数是请求成功后所执行的函数名.
+     例:$("button").click(function(){
+          $.post("demo_test_post.html",
+          {
+            name:"Donald Duck",
+            city:"Duckburg"
+          },
+          function(data,status){
+          alert("Data: " + data + "nStatus: " + status);
+          });
+        });
+
+
+
+
+
+
+
+
+
+
