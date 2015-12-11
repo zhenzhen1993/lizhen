@@ -390,3 +390,94 @@ $(document).ready(function(){
              $(form).ajaxSubmit();
           }
          })          
+     可以设置validate的默认值,写法如下:
+        $.validate.setDefaults({
+         submitHandler:function(form){
+           alert("submitted!");
+           form.submit();
+           }
+          });
+     如果想提交表单,需要使用form.submit(),而不要使用$(form).submit().
+    2.debug,只验证不提交表单
+       如果这个参数为true,那么表单不会提交,值进行检查,调试时十分方便.
+         $().ready(function){
+           $("#signupForm"),validate({
+              debug:true
+             });
+           });
+       如果一个页面中有多个表单都想设置为debug,则使用:
+          $.validate.setDefaults({
+             debug:true
+            })
+    3.ignore:忽略某些元素不验证
+        ignore:".ignore"
+    4.更改错误信息显示的位置
+        errorPlacement:Callback
+      指明错误放置的位置,默认情况是:error.appendTo(element.parent());即把错误信息放在验证的元素后面.
+        errorPlacement:function(error,element){
+           error.appendTo(element.parent());
+         }
+      参数                类型                 描述                                                   默认值
+      errorClass          String               指定错误提示的css类名,可以自定义错误提示的样式         "error"
+      errorElement        String               用什么标签标记错误,默认是label,可以改成em              "label"
+      errorContainer      Selector             显示或者隐藏验证信息,可以自动实现由错误信息出现时
+                                               把容器属性变为显示,无错误是隐藏,用处不大.
+                                               errorContainer:"#messageBox1,#messageBox2"
+      errorLabelContainer Selector             把错误信息同意放在一个容器里面.
+      wrapper             String               用什么标签再把上边的errorElement包起来.
+     一般这三个属性同时使用,实现在一个容器内显示所有错误提示的功能,并且没有信息时自动隐藏.
+       errorContainer:"div.error",
+       errorLabelContainer:$("#signupForm div.error"),
+       wrapper:"li"
+     5.更改错误信息显示的样式
+       设置错误提示的样式,可以增加图标显示,在该系统中已经建立了一个validation.css,专门用于维护校验文件的样式.
+     6.每个字段验证通过执行函数:
+       success:String,Callback
+       要验证的元素通过验证后的动作,如果跟一个字符串,会当作一个css类,也可跟一个函数.
+         success:function(label){
+            label.html("&nbsp;").addClass("checked");
+            }
+       添加"valid"到验证元素,在css中定义的样式<style>label.valid{}</style>.
+         success:"valid"
+     7.异步验证:
+        remote:URL
+       使用ajax方式进行验证,默认会提交当前验证的值到远程地址,如果需要提交其他的值,可以使用data选项.
+         remote: "check-email.php"
+         
+         remote: {
+              url: "check-email.php",     //后台处理程序
+              type: "post",               //数据发送方式
+              dataType: "json",           //接受数据格式   
+              data: {                     //要传递的数据
+                  username: function() {
+                      return $("#username").val();
+                     }
+                 }
+             }
+         远程地址只能输出 "true" 或 "false"，不能有其他输出。
+     8.添加自定义校验
+       addMethod:name,method,message
+       自定义验证方法:
+         // 中文字两个字节
+           jQuery.validator.addMethod("byteRangeLength", function(value, element, param) {
+               var length = value.length;
+               for(var i = 0; i < value.length; i++){
+                    if(value.charCodeAt(i) > 127){
+                        length++;
+                    }
+              }
+            return this.optional(element) || ( length >= param[0] && length <= param[1] );   
+           }, $.validator.format("请确保输入的值在{0}-{1}个字节之间(一个中文字算2个字节)"));
+
+         // 邮政编码验证   
+          jQuery.validator.addMethod("isZipCode", function(value, element) {   
+             var tel = /^[0-9]{6}$/;
+             return this.optional(element) || (tel.test(value));
+             }, "请正确填写您的邮政编码");
+        注意：要在 additional-methods.js 文件中添加或者在 jquery.validate.js 文件中添加。建议一般写在 additional-methods.js 文件中。
+
+        注意：在 messages_cn.js 文件中添加：isZipCode: "只能包括中文字、英文字母、数字和下划线"。调用前要添加对 additional-methods.js 文件的引用。
+
+
+
+      
